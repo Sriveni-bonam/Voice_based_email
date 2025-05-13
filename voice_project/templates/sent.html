@@ -1,0 +1,73 @@
+{% extends 'base_layout.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/sent.css' %}">
+	<body onmousedown = "SendPostRequestSent(event)">
+		<nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark navbar-custom">
+			<div class="container">
+				<a class="navbar-brand mx-auto" style="font-size:150%;">VOICE BASED EMAIL FOR THE BLIND</a>				
+			</div>
+		</nav>
+		<div class="sent masthead text-left text-white">
+			<div class="masthead-content">
+				<div class="sent-container" >
+					<center>
+						<h4 class="masthead-heading mb-0" style = "font-size:60px; color:black;">SENT FOLDER</h4>			
+						<hr>
+						<br>
+						<h2 class="what"> What would you like to do? <h2><br>						
+					</center>
+				
+				<table align="center" >
+					<tr>
+						<td>							
+							<input href="inbox.html"class="btn btn-primary btn-xl rounded-pill mt-5"
+							role="button"
+							style="width: 250px; background-color: black;" type="submit" 
+							value="SEARCH" >
+						</td>
+					</tr>
+						
+					<tr>
+						<td>							
+							<input href="options.html"class="btn btn-primary btn-xl rounded-pill mt-5" 
+							role="button" 
+							style="width: 250px; background-color: black;" type="submit"  
+							value="BACK">
+						</td>
+					</tr>
+											
+					<tr>
+						<td>						
+							<input href="login.html"class="btn btn-primary btn-xl rounded-pill mt-5"
+							role="button"
+							style="width: 250px; background-color: black;" type="submit" 
+							value="LOGOUT">
+						</td>
+					</tr>
+
+				</table>			
+				</div>
+			</div>
+			
+		</div>
+
+	<script>
+	function SendPostRequestSent(event){
+		$.ajax({
+        url: "{% url 'sent' %}",
+        method: 'POST',
+        data: { 'csrfmiddlewaretoken': '{{ csrf_token }}'},
+        success: function (data) {
+			if(data.result == 'success'){
+				window.location = "{% url 'options' %}";
+			}
+			else if(data.result == 'logout'){
+				window.location = "{% url 'login' %}";
+			}
+        }
+    });
+	}
+	</script>
+
+{% endblock %}

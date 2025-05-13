@@ -1,0 +1,153 @@
+{% extends 'base_layout.html' %}
+<style>
+	@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text&family=Tilt+Prism&display=swap');
+</style>
+{% load static %}
+{% block content %}
+
+<style>
+	body {
+		height: 100%; 
+		margin: 0;
+		padding: 0;
+	}
+	
+	body {
+		background: url('{% static "images/menu_bg.jpg" %}') no-repeat center center fixed;
+		background-size: cover;
+		position: relative;
+		min-height: 100vh;  /* Ensure the body covers the entire viewport height */
+	}
+	
+	body::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;  /* Ensure the overlay covers the full height */
+		background: rgba(255, 255, 255, 0.6); /* The overlay color */
+		z-index: -1; /* Keep the overlay behind the content */
+	}
+
+	input[type="submit"]{
+		color: rgb(30, 44, 29);
+		font-weight:bold;
+		width:220px;
+		border:2px solid rgb(176, 229, 145);
+		box-shadow:3px 2px 2px rgb(100, 121, 61);
+		background:radial-gradient(circle, white, rgb(90, 108, 58));
+	}
+	input[type="submit"]:hover{
+		background-color:rgb(100, 121, 61);
+		color:rgb(176, 229, 145);
+	}
+
+</style>
+<link rel="stylesheet" type="text/css" href="{% static 'css/options.css' %}">
+	<body onmousedown = "SendPostRequestOptions(event)">
+		
+			<nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark navbar-custom">
+				<div class="container"><a class="navbar-brand mx-auto dm-serif-text-regular" style="font-size:150%;">VOICE BASED EMAIL FOR THE BLIND</a>
+				</div>
+			</nav>
+			<div class="full-options">
+			<div class="masthead text-left text-white">
+				<div class="masthead-content">
+					<div class="options-container" >
+						<center>
+						<h4 class="masthead-heading mb-0" style = "margin-top: 60px; font-size: 80px;color:black;">MENU PAGE</h4>			
+						<br>
+						<h2 style="color:black"> What would you like to do? <h2>
+						</center>
+						<div class ="options">						
+							<table align="center" >
+								<tr>
+									<td>
+										<a href="compose.html"> 
+											<input href="compose.html"class="btn btn-primary btn-xl mt-5"
+											class="button" role="button"
+											type="submit" 
+											value="COMPOSE"></a>
+									</td>
+								</tr>
+									
+								<tr>
+									<td>
+										<a href="inbox.html"> 
+											<input href="inbox.html"class="btn btn-primary btn-xl mt-5"
+											role="button"
+											type="submit" 
+											value="INBOX" ></a>
+									</td>
+
+								</tr>
+									
+								<tr>
+									<td>
+										<a href="sent.html"> 
+											<input href="sent.html"class="btn btn-primary btn-xl mt-5" 
+											role="button" 
+											type="submit"  
+											value="SENT"></a>
+									</td>
+								</tr>
+									
+								<tr>
+									<td>
+										<a href="trash.html"> 
+											<input href="trash.html"class="btn btn-primary btn-xl mt-5"
+											role="button" 
+											type="submit" 
+											value="TRASH"></a>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<a href="login.html"> 
+											<input href="logout.html"class="btn btn-primary btn-xl mt-5"
+											role="button"
+											type="submit" 
+											value="LOGOUT"></a>
+									</td>
+								</tr>
+									
+							</table>
+						</div>		
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+		
+	<script>
+	function SendPostRequestOptions(event){
+		$.ajax({
+        url: "{% url 'options' %}",
+        method: 'POST',
+        data: { 'csrfmiddlewaretoken': '{{ csrf_token }}'},
+        success: function (data) {
+			if(data.result == 'compose'){
+				window.location = "{% url 'compose' %}";
+			}
+			else if(data.result == 'sent'){
+				window.location = "{% url 'sent' %}";
+			}	
+			else if(data.result == 'inbox'){
+				window.location = "{% url 'inbox' %}";
+			}
+			else if(data.result == 'trash'){
+				window.location = "{% url 'trash' %}";
+			}
+			else if(data.result == 'logout'){
+				window.location = "{% url 'login' %}";
+			}
+			else if(data.result == 'failure'){
+				window.location = "{% url 'options' %}";
+			}
+        }
+    });
+	}
+	</script>
+
+{% endblock %}

@@ -1,0 +1,85 @@
+{% extends 'base_layout.html' %}
+<style>
+	@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text&family=Tilt+Prism&display=swap');
+</style>
+{% block content %}
+    <body onmousedown = "SendPostRequestHome(event)">
+ <div class="page-container">
+		<nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark navbar-custom">
+			<div class="container"><a class="navbar-brand mx-auto dm-serif-text-regular" style="font-size:150%; cc">VOICE BASED EMAIL FOR THE BLIND</a>
+			</div>
+		</nav>
+	<div class="for-bg mt-0 pt-0">
+		<div class="masthead text-center text-white">
+			<div class="masthead-content">
+				<div class="login-container" >
+					<div class="icon">👤</div>
+					<h1 style="margin-top:45px; margin-bottom:0px; font-size:45px; font-family: 'Ubuntu', sans-serif; color: rgb(40, 24, 53); font-weight:bold">LOGIN HERE</h1>
+					
+					<form action="login.html" method="POST">
+						<div class="mycontainer">	
+						    <div class="login" id = "here">
+							   <script> 
+								$(document).ready(function(){
+								setInterval(function(){
+									  $("#here").load(window.location.href + " #here" );
+								}, 1000);
+								});
+								</script>
+							
+								{% csrf_token %}
+							  <h3 style="color: black;text-align: left;margin-left: 15%; font-family: 'Ubuntu', sans-serif;">Email</h3>
+							  <input type="text" placeholder="Email" name="email"required value={{detail.email}} >
+					
+							  <br>
+							  <h3 style="color: black;text-align: left;margin-left: 15%; font-family: 'Ubuntu', sans-serif;">Password</h3>
+							  <input type="password" placeholder="Password" name="password"required value={{detail.password}} >
+							  
+							   <a href="options.html"> 
+								<br><br>
+							   <input href="options.html"class="btn btn-primary" role="button" type="submit" value="LOGIN" style="background-color: black;"></a>
+							  <br><br>
+				
+							</div>
+						</div>
+					</form>						   
+				</div>
+			</div>	
+		</div>
+	</div>
+ </div>
+			<div class="bg-circle-1 bg-circle"></div>
+			<div class="bg-circle-2 bg-circle"></div>
+			<div class="bg-circle-3 bg-circle"></div>
+			<div class="bg-circle-4 bg-circle"></div>
+</body>
+
+		<script>
+			function SendPostRequestHome(event){
+				
+				$.ajax({
+				url: "{% url 'login' %}",
+				method: 'POST',
+				data: { 'csrfmiddlewaretoken': '{{ csrf_token }}'},
+				success: function (data) {
+					
+					if(data.result == 'success'){
+						
+						window.location = "{% url 'options' %}";
+					}
+					else if(data.result == 'failure'){
+						window.location = "{% url 'login' %}";
+					}
+				}
+			});
+			}
+			</script>
+			
+			{% comment %} <footer class="py-5 bg-black footer-class">
+				<div class="container">
+					<p class="text-center text-white m-0 small ">Copyright&nbsp;© Voice Based Email&nbsp;</p>
+				</div>
+			</footer> {% endcomment %}
+
+
+{% endblock %}

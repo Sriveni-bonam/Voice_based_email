@@ -1,0 +1,78 @@
+{% extends 'base_layout.html' %}
+<style>
+	@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text&family=Tilt+Prism&display=swap');
+</style>
+{% load static %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/compose.css' %}">
+<body onmousedown = "WhichButtonCompose(event)">
+	<div class="full-compose">
+		{% comment %} <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark navbar-custom">
+        	<div class="container"><a class="navbar-brand mx-auto dm-serif-text-regular" style="font-size:150%; cc">VOICE BASED EMAIL FOR THE BLIND</a>           
+        	</div>
+    	</nav> {% endcomment %}
+    	<div class="masthead text-left text-white">
+    	<div class="masthead-content">
+        	<div class="compose-container">
+            	<center>
+            	<h4 class="masthead-heading mb-0 compose-heading" style="margin-top: 10px; font-size: 60px;">
+					<span style="color: rgb(90, 108, 58)">COMPOSE</span> 
+					<span style="color: brown;">MAIL</span>
+				</h4>
+				
+				<hr>
+				</center>               
+            	<br>
+
+				<form id="here">
+					<script> 
+						$(document).ready(function(){
+						setInterval(function(){
+							$("#here").load(window.location.href + " #here" );
+						}, 1000);
+						});
+					</script>
+			
+					{% csrf_token %}
+					<b><label> RECIEPIENT'S EMAIL ID </label></b><br>
+					<input id="email" type="text" placeholder="Enter Email" required value="{{compose.recipient}}">
+					<br><br>
+
+					<b><label> SUBJECT </label></b><br>
+					<input id="subject" type="text" placeholder=" Enter Subject" required value="{{compose.subject}}"> 
+					<br><br>
+
+					<b><label> BODY</label></b><br>
+					<input id="body"
+					rows="5" placeholder="Type Message" required value="{{compose.body}}">
+					<br>
+
+					<center>
+					<input href="#"class="btn btn-primary mt-5 send-style" role="button" type="button" onclick="sendEmail()"value="SEND MAIL"></a>
+					</center>  
+				</form>
+        	</div>
+    	</div>
+		</div>
+	</div>
+</body>
+
+<script>
+	function WhichButtonCompose(event){
+		$.ajax({
+        url: "{% url 'compose' %}",
+        method: 'POST',
+        data: { 'csrfmiddlewaretoken': '{{ csrf_token }}'},
+        success: function (data) {
+			if(data.result == 'success'){
+				window.location = "{% url 'options' %}";
+			}
+			else if(data.result == 'failure'){
+				window.location = "{% url 'compose' %}";
+			}
+        }
+    });
+	}
+</script>
+
+{% endblock %}

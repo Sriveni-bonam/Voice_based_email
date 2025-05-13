@@ -1,0 +1,55 @@
+.inbox {
+    
+    background: linear-gradient(
+        to bottom right, 
+        rgba(225, 175, 234, 0.3),  /* Light transparent white */
+        rgba(222, 213, 224, 0.6)         /* Dark transparent black */
+    );
+    height: 100vh; /* Ensure full-page height */
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    padding-top: 60px; /* Adjust for navbar height */
+}
+
+.inbox-container {
+    
+    background: linear-gradient(
+        to bottom right, 
+        rgba(225, 175, 234, 0.3),  /* Light transparent white */
+        rgba(13, 0, 16, 0.6)         /* Dark transparent black */
+    );
+    /* background: linear-gradient(
+        to bottom right, 
+        rgba(211, 162, 223, 0.3),  
+        rgba(13, 1, 15, 0.6)         
+    ); */
+    
+    height: auto;
+    width: 100%;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 8px rgba(14, 13, 13, 0.2);
+}
+
+.inbox-container {
+    background-color: white; /* Keep the inside color */
+    border: 5px solid transparent; /* Make border transparent */
+    border-radius: 10px;
+    background-image: linear-gradient( rgb(237, 212, 212), rgba(235, 230, 237, 0.3)),  /* Inner Background */
+                      linear-gradient(to right, #714756, #3a4f65); /* Border Gradient */
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+}
+
+.what{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color-scheme: light dark;
+    color:rgb(30, 6, 30);
+}
+
+hr{
+    color: black;
+    font-weight: bolder;
+}
