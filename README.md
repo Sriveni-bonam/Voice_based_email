@@ -55,25 +55,25 @@ python manage.py runserver
 ## 📂 Screenshots Included:
 
 **Login Page**  
-   ![Login](login.png)
+   ![Login](https://github.com/Sriveni-bonam/Voice_based_email/blob/8bf87c281fb7c78c30b5fd7cfe8d327b9742bb86/Result/login.png)
    
 **Main Page**  
-   ![Main Page](Main%20page.png)
+   ![Main Page](https://github.com/Sriveni-bonam/Voice_based_email/blob/8bf87c281fb7c78c30b5fd7cfe8d327b9742bb86/Result/Main%20page.png)
 
 **Compose Email Page**  
-   ![Compose](compose.png)
+   ![Compose](https://github.com/Sriveni-bonam/Voice_based_email/blob/8bf87c281fb7c78c30b5fd7cfe8d327b9742bb86/Result/compose.png)
 
 **Contact List Page**  
    ![Contact](contact.png)
 
 **Inbox View**  
-   ![Inbox](inbox.png)
+   ![Inbox](https://github.com/Sriveni-bonam/Voice_based_email/blob/8bf87c281fb7c78c30b5fd7cfe8d327b9742bb86/Result/inbox.png)
 
 **Sent Emails Page**  
-   ![Sent](sent.png)
+   ![Sent](https://github.com/Sriveni-bonam/Voice_based_email/blob/8bf87c281fb7c78c30b5fd7cfe8d327b9742bb86/Result/sent.png)
 
 **Trash View**  
-   ![Trash](trash.png)
+   ![Trash](https://github.com/Sriveni-bonam/Voice_based_email/blob/8bf87c281fb7c78c30b5fd7cfe8d327b9742bb86/Result/trash.png)
 
 
 
