@@ -48,3 +48,33 @@ As technology evolves rapidly, visually challenged people may feel increasingly 
 ```bash
 python manage.py runserver
 
+```
+
+---
+
+## 📂 Screenshots Included:
+
+**Login Page**  
+   ![Login](login.png)
+   
+**Main Page**  
+   ![Main Page](Main%20page.png)
+
+**Compose Email Page**  
+   ![Compose](compose.png)
+
+**Contact List Page**  
+   ![Contact](contact.png)
+
+**Inbox View**  
+   ![Inbox](inbox.png)
+
+**Sent Emails Page**  
+   ![Sent](sent.png)
+
+**Trash View**  
+   ![Trash](trash.png)
+
+
+
+
